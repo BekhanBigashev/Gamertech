@@ -1,0 +1,38 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} {{cooler.model}} {% endblock %}
+{% block content %}
+
+<div class="product_detail">
+	<h1 class="product_detail_title">{{cooler.name}}</h1>
+	<div class="product_info">
+		<div class="row product_card">
+			<div class="col-lg-5">
+				<img class="product_detail_image" src="{{cooler.image.url}}" alt="">
+			</div>
+			<div class="col-lg-7">
+				<ul>
+					<li class="product_detail_price"><h3>Цена: {{cooler.price}} тг</h3></li>
+					<li class="product_detail_characterictic"><b>Модель:</b> {{cooler.manufacturer}} {{cooler.model}}</li>
+				</ul>
+			</div>
+		</div>
+		<div class="all_products d-flex mb-5">
+			{% for cooler in product_list %}
+				<div class="product_item">
+					<a href="{% url 'cooler_detail' pk=cooler.pk %}"><img class="product_img" src="{{cooler.image.url}}" alt=""></a>
+					<hr>
+					<div class="product_title"><a href="{% url 'cooler_detail' pk=cooler.pk %}">{{cooler.model}}</a></div>
+					<div class="product_price">
+						<p>Цена: {{cooler.price}} тг</p>
+					</div>
+					<div class="product_detail_link">
+						<a class="btn btn-secondary" href="{% url 'cooler_detail' pk=cooler.pk %}">Перейти</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} {{harddisk.model}} {% endblock %}
+{% block content %}
+
+<div class="product_detail">
+	<h1 class="product_detail_title">{{harddisk.name}}</h1>
+	<div class="product_info">
+		<div class="row product_card">
+			<div class="col-lg-5">
+				<img class="product_detail_image" src="{{harddisk.image.url}}" alt="">
+			</div>
+			<div class="col-lg-7">
+				<ul>
+					<li class="product_detail_price"><h3>Цена: {{harddisk.price}} тг</h3></li>
+					<li class="product_detail_characterictic"><b>Модель:</b> {{harddisk.manufacturer}} {{harddisk.model}}</li>
+					<li class="product_detail_characterictic"><b>Объем памяти:</b> {{harddisk.memory}} GB</li>
+				</ul>
+			</div>
+		</div>
+		<div class="all_products d-flex mb-5">
+			{% for harddisk in product_list %}
+				<div class="product_item">
+					<a href="{% url 'harddisk_detail' pk=harddisk.pk %}"><img class="product_img" src="{{harddisk.image.url}}" alt=""></a>
+					<hr>
+					<div class="product_title"><a href="{% url 'harddisk_detail' pk=harddisk.pk %}">{{harddisk.model}}</a></div>
+					<div class="product_price">
+						<p>Цена: {{harddisk.price}} тг</p>
+					</div>
+					<div class="product_detail_link">
+						<a class="btn btn-secondary" href="{% url 'harddisk_detail' pk=harddisk.pk %}">Перейти</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}Готовые сборки{% endblock %}
+{% block content %}
+<h1>Готовые сборки</h1>
+<div class="products_list d-flex">
+	{% for product in computer_list %}
+		<div class="product_item">
+			<a href="{% url 'computer_detail' pk=product.pk %}"><img class="product_img" src="{{product.corpus.image.url}}" alt=""></a>
+			<hr>
+			<div class="product_title"><a href="{% url 'computer_detail' pk=product.pk %}">{{product.name}}</a></div>
+			<div class="product_price">
+				<p>Цена: {{product.price}} тг</p>
+			</div>
+			<div class="product_detail_link">
+				<a class="btn btn-secondary" href="{% url 'computer_detail' pk=product.pk %}">Перейти</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+	
+{% endblock %}
+	

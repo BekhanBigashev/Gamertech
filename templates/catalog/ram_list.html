@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}Оперативная память{% endblock %}
+{% block content %}
+<h1>Оперативная память</h1>
+<div class="products_list d-flex">
+	{% for ram in ram_list %}
+		<div class="product_item">
+			<a href="{% url 'ram_detail' pk=ram.pk %}"><img class="product_img" src="{{ram.image.url}}" alt=""></a>
+			<hr>
+			<div class="product_title"><a href="{% url 'ram_detail' pk=ram.pk %}">{{ram.model}}</a></div>
+			
+			<div class="product_price">
+				<p>Цена: {{ram.price}} тг</p>
+			</div>
+			<div class="product_detail_link">
+				<a class="btn btn-secondary" href="{% url 'ram_detail' pk=ram.pk %}">Перейти</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+	
+{% endblock %}
+	

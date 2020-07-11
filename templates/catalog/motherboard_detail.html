@@ -1,0 +1,41 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} {{motherboard.model}} {% endblock %}
+{% block content %}
+
+<div class="product_detail">
+	<h1 class="product_detail_title">{{motherboard.name}}</h1>
+	<div class="product_info">
+		<div class="row product_card">
+			<div class="col-lg-5">
+				<img class="product_detail_image" src="{{motherboard.image.url}}" alt="">
+			</div>
+			<div class="col-lg-7">
+				<ul>
+					<li class="product_detail_price"><h3>Цена: {{motherboard.price}} тг</h3></li>
+					<li class="product_detail_characterictic"><b>Модель:</b> {{motherboard.manufacturer}} {{motherboard.model}}</li>
+					<li class="product_detail_characterictic"><b>Сокеt: </b>{{motherboard.socket}}</li>
+					<li class="product_detail_characterictic"><b>Чипсет: </b>{{motherboard.chipset}}</li>
+					<li class="product_detail_characterictic"><b>Производитель: </b>{{motherboard.manufacturer}}</li>
+				</ul>
+			</div>
+		</div>
+		<div class="all_products d-flex mb-5">
+			{% for motherboard in product_list %}
+				<div class="product_item">
+					<a href="{% url 'motherboard_detail' pk=motherboard.pk %}"><img class="product_img" src="{{motherboard.image.url}}" alt=""></a>
+					<hr>
+					<div class="product_title"><a href="{% url 'motherboard_detail' pk=motherboard.pk %}">{{motherboard.model}}</a></div>
+					<div class="product_price">
+						<p>Цена: {{motherboard.price}} тг</p>
+					</div>
+					<div class="product_detail_link">
+						<a class="btn btn-secondary" href="{% url 'motherboard_detail' pk=motherboard.pk %}">Перейти</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} {{computer.name}} {% endblock %}
+{% block content %}
+
+<div class="product_detail">
+	<h1 class="product_detail_title">{{computer.name}}</h1>
+	<div class="product_info">
+		<div class="row product_card">
+			<div class="col-lg-5">
+				<img class="product_detail_image" src="{{computer.corpus.image.url}}" alt="">
+			</div>
+			<div class="col-lg-7">
+				<ul>
+					<li class="product_detail_price"><h3>{{computer.price}} тг</h3></li>
+					<li class="product_detail_characterictic"><b>Процессор:</b> {{computer.processor.manufacturer}} {{computer.processor.model}}</li>
+					<li class="product_detail_characterictic"><b>Материнская плата:</b> {{computer.motherboard.manufacturer}} {{computer.motherboard.model}}</li>
+					<li class="product_detail_characterictic"><b>Оперативная память:</b> {{computer.ram.manufacturer}} {{computer.ram.model}}</li>
+					<li class="product_detail_characterictic"><b>Кулер:</b> {{computer.cooler.manufacturer}} {{computer.cooler.model}}</li>
+					<li class="product_detail_characterictic"><b>Жесткий диск:</b> {{computer.hard.manufacturer}} {{computer.hard.model}}</li>
+					<li class="product_detail_characterictic"><b>Видеокарта: </b>{{computer.graphics.manufacturer}} {{computer.graphics.model}}</li>
+					<li class="product_detail_characterictic"><b>Корпус:</b> {{computer.corpus.manufacturer}} {{computer.corpus.model}}</li>
+					<li class="product_detail_characterictic"><b>Блок питания:</b> {{computer.power.manufacturer}} {{computer.power.model}}</li>
+					<li class="product_detail_characterictic"><b>Категория:</b> {{computer.category.name}}</li>
+					<li class="product_detail_characterictic"><b>Операционная система:</b> {{computer.os}}</li>
+				</ul>
+			</div>
+			
+		</div>
+		<div class="all_products d-flex mb-5">
+				{% for computer in product_list %}
+					<div class="product_item">
+						<a href="{% url 'computer_detail' pk=computer.pk %}"><img class="product_img" src="{{computer.corpus.image.url}}" alt=""></a>
+						<hr>
+						<div class="product_title"><a href="{% url 'computer_detail' pk=computer.pk %}">{{computer.model}}</a></div>
+						<div class="product_price">
+							<p>Цена: {{computer.price}} тг</p>
+						</div>
+						<div class="product_detail_link">
+							<a class="btn btn-secondary" href="{% url 'computer_detail' pk=computer.pk %}">Перейти</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+	
+{% endblock %}
+	

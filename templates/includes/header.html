@@ -1,0 +1,57 @@
+{% load static %}
+<header class="header">
+	<nav class="navbar navbar-expand-lg navbar-dark ">
+		<div class="container">
+			<h1 class="logo-title mr-5">PC-MANIA</h1>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'product_list' %}">Главная</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
+							Категории
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<div class="items dropdown-item"><a href="{% url 'computer_list' %}">Готовые сборки</a></div>
+							<div class="items dropdown-item"><a href="{% url 'motherboard_list' %}">Материнские платы</a></div>
+							<div class="items dropdown-item"><a href="{% url 'processor_list' %}">Процессоры</a></div>
+							<div class="items dropdown-item"><a href="{% url 'graphicscard_list' %}">Видеокарты</a></div>
+							<div class="items dropdown-item"><a href="{% url 'ram_list' %}">Оперативная память</a></div>
+							<div class="items dropdown-item"><a href="{% url 'harddisk_list' %}">Жеские диски</a></div>
+							<div class="items dropdown-item"><a href="{% url 'powersupply_list' %}">Блоки питания</a></div>
+							<div class="items dropdown-item"><a href="{% url 'cooler_list' %}">Куллеры</a></div>
+							<div class="items dropdown-item"><a href="{% url 'corpus_list' %}">Корпусы</a></div>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#">О сайте</a>
+					</li>
+				</ul>
+				<div class="registration navbar-nav">
+					{% if user.is_authenticated %}
+						<li class="nav-item">
+							<a class="nav-link user_link" href="">{{user.username}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">Выход</a>
+						</li>
+
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="">Войти</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">Регистрация</a>
+						</li>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+	</nav>
+</header>

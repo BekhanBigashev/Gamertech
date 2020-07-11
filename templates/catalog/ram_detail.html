@@ -1,0 +1,40 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} {{ram.model}} {% endblock %}
+{% block content %}
+
+<div class="product_detail">
+	<h1 class="product_detail_title">{{ram.name}}</h1>
+	<div class="product_info">
+		<div class="row product_card">
+			<div class="col-lg-5">
+				<img class="product_detail_image" src="{{ram.image.url}}" alt="">
+			</div>
+			<div class="col-lg-7">
+				<ul>
+					<li class="product_detail_price"><h3>Цена: {{ram.price}} тг</h3></li>
+					<li class="product_detail_characterictic"><b>Модель:</b> {{ram.manufacturer}} {{ram.model}}</li>
+					<li class="product_detail_characterictic"><b>Тип памяти:</b> {{ram.type_of_ram}}</li>
+					<li class="product_detail_characterictic"><b>Объем памяти:</b> {{ram.memory}} ГБ</li>
+				</ul>
+			</div>
+		</div>
+		<div class="all_products d-flex mb-5">
+			{% for ram in product_list %}
+				<div class="product_item">
+					<a href="{% url 'ram_detail' pk=ram.pk %}"><img class="product_img" src="{{ram.image.url}}" alt=""></a>
+					<hr>
+					<div class="product_title"><a href="{% url 'ram_detail' pk=ram.pk %}">{{ram.model}}</a></div>
+					<div class="product_price">
+						<p>Цена: {{ram.price}} тг</p>
+					</div>
+					<div class="product_detail_link">
+						<a class="btn btn-secondary" href="{% url 'ram_detail' pk=ram.pk %}">Перейти</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

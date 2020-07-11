@@ -1,0 +1,33 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %} Список товаров {% endblock %}
+{% block content %}
+<h1>Computers available</h1>
+
+
+<div class="sliderContainer">
+	{% for computer in computers %}
+	<div class="computers">
+		<div class="product_item">
+			<a href="{% url 'computer_detail' pk=computer.pk %}"><img class="product_img" src="{{computer.corpus.image.url}}" alt=""></a>
+			<hr>
+			<div class="product_title"><a href="{% url 'computer_detail' pk=computer.pk %}">{{computer.name}}</a></div>
+			<div class="product_price">
+				<p>Цена: {{computer.price}} тг</p>
+			</div>
+			<div class="product_detail_link">
+				<a class="btn btn-secondary" href="{% url 'computer_detail' pk=computer.pk %}">Перейти</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+<script>
+	$('.sliderContainer').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});
+</script>
+{% endblock %}

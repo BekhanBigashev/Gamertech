@@ -1,0 +1,17 @@
+<div class="sidebar-inner">
+	<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn search-btn btn-secondary my-2 my-sm-0" type="submit"><span>Search</span></button>
+    </form>
+    <div class="sidebar_categories_list">
+    		<div class="items"><a href="{% url 'computer_list' %}">Готовые сборки</a></div>
+    		<div class="items"><a href="{% url 'motherboard_list' %}">Материнские платы</a></div>
+    		<div class="items"><a href="{% url 'processor_list' %}">Процессоры</a></div>
+    		<div class="items"><a href="{% url 'graphicscard_list' %}">Видеокарты</a></div>
+    		<div class="items"><a href="{% url 'ram_list' %}">Оперативная память</a></div>
+    		<div class="items"><a href="{% url 'harddisk_list' %}">Жесткие диски</a></div>
+    		<div class="items"><a href="{% url 'powersupply_list' %}">Блоки питания</a></div>
+    		<div class="items"><a href="{% url 'cooler_list' %}">Куллеры</a></div>
+    		<div class="items"><a href="{% url 'corpus_list' %}">Корпусы</a></div>
+    </div>
+</div>
